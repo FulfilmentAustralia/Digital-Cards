@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+<title>Khalid Rafiq — Scan to connect</title>
+
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="favicon-32.png" sizes="32x32">
+<meta name="theme-color" content="#070C18">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Khalid Rafiq">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#2B5BED;
+    --blue-dark:#1E44C4;
+    --navy-deep:#070C18;
+    --navy:#0B142A;
+    --white:#FFFFFF;
+    --grey:#8A93A3;
+    --line: rgba(255,255,255,0.12);
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0; padding:0; height:100%;
+    background:var(--navy-deep);
+    overflow:hidden;
+  }
+  body{
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    color:var(--white);
+    min-height:100dvh;
+    display:flex; flex-direction:column; align-items:center; justify-content:space-between;
+    padding: max(28px, env(safe-area-inset-top)) 24px max(24px, env(safe-area-inset-bottom));
+    position:relative;
+  }
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background:
+      radial-gradient(circle at 22% 15%, rgba(43,91,237,0.30), transparent 42%),
+      radial-gradient(circle at 80% 85%, rgba(43,91,237,0.24), transparent 45%);
+    z-index:0;
+  }
+  .top, .mid, .bottom{ position:relative; z-index:1; width:100%; max-width:420px; text-align:center; }
+
+  .brand{
+    font-size:12px; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--grey); margin:0 0 6px 0;
+  }
+  .brand-line{
+    width:36px; height:3px; background:var(--blue); border-radius:2px; margin:0 auto 20px auto;
+  }
+
+  .avatar{
+    width:64px; height:64px; border-radius:50%;
+    border:2px solid var(--blue); object-fit:cover; display:block; margin:0 auto 12px auto;
+    background:var(--navy);
+  }
+  .name{ font-weight:800; font-size:20px; margin:0 0 2px 0; letter-spacing:-0.01em; }
+  .title{ font-size:13px; color:var(--white); font-weight:600; margin:0; opacity:.85; }
+
+  .qr-card{
+    background:var(--white);
+    border-radius:24px;
+    padding:20px;
+    display:inline-flex;
+    box-shadow:0 20px 60px rgba(0,0,0,0.45);
+  }
+  .qr-card #qr{ line-height:0; }
+  .qr-card img, .qr-card canvas{ display:block; width:min(64vw, 300px); height:min(64vw, 300px); }
+
+  .scan-label{
+    margin-top:18px; font-size:14.5px; font-weight:700; color:var(--white);
+  }
+  .scan-sub{
+    margin-top:4px; font-size:12.5px; color:var(--grey);
+  }
+
+  .view-link{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:13px; font-weight:600; color:var(--white); text-decoration:none;
+    border:1px solid var(--line); border-radius:100px; padding:10px 20px;
+    margin-bottom:10px;
+  }
+  .company{ font-size:11.5px; color:var(--grey); margin:0; }
+</style>
+</head>
+<body>
+
+  <div class="top">
+    <p class="brand">Fulfilment Australia</p>
+    <div class="brand-line"></div>
+  </div>
+
+  <div class="mid">
+    <img class="avatar" src="khalid-avatar.jpg" alt="Khalid Rafiq">
+    <p class="name">Khalid Rafiq</p>
+    <p class="title">Chief Account Officer HR / Finance</p>
+
+    <div class="qr-card">
+      <div id="qr"></div>
+    </div>
+
+    <p class="scan-label">Scan to save my contact</p>
+    <p class="scan-sub">Point your camera at the code</p>
+  </div>
+
+  <div class="bottom">
+    <a class="view-link" href="index.html">View full card →</a>
+    <p class="company">Fulfilment Australia · 85 Grose Street, North Parramatta NSW</p>
+  </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  new QRCode(document.getElementById("qr"), {
+    text: "https://fulfilmentaustralia.github.io/Digital-Cards/khalid-rafiq/index.html",
+    width: 600,
+    height: 600,
+    colorDark: "#070C18",
+    colorLight: "#FFFFFF",
+    correctLevel: QRCode.CorrectLevel.M
+  });
+
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("sw.js").catch(() => {});
+    });
+  }
+</script>
+</body>
+</html>
