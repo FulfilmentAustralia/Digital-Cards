@@ -1,5 +1,5 @@
-const CACHE = "mark-mina-card-v1";
-const ASSETS = ["./qr.html", "./index.html", "./icon-192.png", "./icon-512.png", "./mark-avatar.jpg"];
+const CACHE = "krystal-card-v1";
+const ASSETS = ["./qr.html", "./index.html", "./icon-192.png", "./icon-512.png", "./krystal-avatar.jpg"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
