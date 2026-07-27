@@ -1,4 +1,4 @@
-const CACHE = "paul-woplin-card-v1";
+const CACHE = "paul-woplin-card-v2";
 const ASSETS = ["./qr.html", "./index.html", "./icon-192.png", "./icon-512.png", "./paul-avatar.jpg"];
 
 self.addEventListener("install", (event) => {
